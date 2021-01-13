@@ -1,0 +1,17 @@
+<h3>Produits: </h3>
+
+<label>Recherche :  </label>
+<input id="nom" [appError]="getValidationNom()" [(ngModel)]="searchNom" (ngModelChange)="onSearchTermChange()">
+<br>
+<button type="submit" style="background-color: green;" class="btn btn-dark" [(ngModel)]="searchType" (click)="onClickType(searchCasque)">Casque</button>
+<button type="submit" style="background-color: blue;" class="btn btn-dark" [(ngModel)]="searchType" (click)="onClickType(searchClavier)">Clavier</button>
+<button type="submit" style="background-color: red;" class="btn btn-dark" (click)="ngOnInit()">Tout</button>
+
+<ul class="list-group">
+	<li class="list-group-item" *ngFor="let produit of produits | async">
+		<p><a [routerLink]="['./detail',produit.numero]">{{ produit.numero }} - {{ produit.nom }}</a></p>
+		<button type="submit" (click)="onClickAdd(produit)">Ajouter Panier</button>
+
+
+	</li>
+</ul>
